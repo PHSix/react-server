@@ -1,0 +1,47 @@
+:root {
+  --while-bg: #E2E8F0;
+  --blue: #0EA5E9;
+}
+
+.sider-main{
+  width: 30%;
+  background-color: var(--while-bg);
+  height: 100%;
+}
+
+.sider-user-info{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+
+a {
+  text-decoration: none; 
+  color: #27272A;
+  font-size: 2rem;
+}
+
+.sider-link-box {
+  background-color: var(--while-bg);
+  text-align: center;
+  padding: 1.2rem 0;
+  min-width: 100px;
+  max-width: 160px;
+  cursor: pointer;
+}
+.sider-link-box-cur {
+  background-color: var(--blue);
+  text-align: center;
+  padding: 1.2rem 0;
+  min-width: 100px;
+  max-width: 160px;
+  cursor: pointer;
+}
+
+.sider-link-box:hover {
+  background-color: var(--blue);
+}
