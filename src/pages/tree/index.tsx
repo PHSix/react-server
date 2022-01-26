@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { getFiles } from '../../utils/request';
 
 // import icons from '@exuanbo/file-icons-js';
 
