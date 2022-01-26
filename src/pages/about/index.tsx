@@ -1,11 +1,18 @@
-import {} from 'react';
+import {ReactNode} from 'react';
+
+const Tag = function ({ colorClass, children}: { colorClass: string, children: ReactNode}) {
+  return <span className={colorClass + " p-1 mx-2 rounded-md"}>
+    {children}
+  </span>
+}
 
 export const About = function () {
   return (
-    <main className="flex flex-col h-full w-full justify-center text-left px-8 text-lg items-center py-8">
-      <section className="md:w-1/2">
+    <main className="flex flex-col items-center justify-center w-full h-full px-8 py-8 text-lg text-left">
+      <div className="md:w-1/2">
         {/* TODO: 头像 */}
         <p className="font-bold">PH</p>
+        <section className="mb-4">
         <p className="font-normal">个人简介</p>
         <hr></hr>
         <p>
@@ -21,11 +28,17 @@ export const About = function () {
           </a>
         </p>
         <p>
-          <span className="font-bold">标签：</span>Linux, JavaScript, FrontDesk
+          <span className="font-bold">标签：</span>
+          <Tag colorClass='bg-red-300'>Linux</Tag>
+          <Tag colorClass='bg-pink-300'>Javascript</Tag>
+          <Tag colorClass='bg-purple-300'>FrontDesk</Tag>
         </p>
+        </section>
+        <section className="mb-4">
         <p className="font-normal">个人项目</p>
         <hr></hr>
-      </section>
+        </section>
+      </div>
     </main>
   );
 };

@@ -41,7 +41,7 @@ export const TypingHeader = function ({ title, className }: TypingProps) {
 
   return (
     <section className={`m-8 z-10 ${className ? className: ""}`}>
-      <pre className='inline' >{typeWords}</pre>
+      <pre className='inline whitespace-pre-wrap' >{typeWords}</pre>
       <Blink className='inline'>_</Blink>
     </section>
   );

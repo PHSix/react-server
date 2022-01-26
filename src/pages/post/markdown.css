@@ -100,4 +100,6 @@ b.markdown lockquote p {
 .markdown li {
   white-space: word-wrap;
 }
-
+.markdown pre {
+  overflow: auto;
+}

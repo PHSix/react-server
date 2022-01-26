@@ -56,7 +56,7 @@ document.title = "PH's website"
 }, [])
   const labels: Label[] = [
     {
-      labelName: '日记',
+      labelName: '笔记',
       labelTo: '/blog',
       idx: 1,
       labelColorClass: 'bg-gradient-to-l',

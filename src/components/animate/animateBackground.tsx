@@ -16,7 +16,12 @@ const SwellBox = styled.div<SwellBoxInterface>`
 
 export const AnimateBackground = function () {
   const initSize = 0;
-  const maxSize = (()=> window.innerWidth < window.innerHeight ? screen.width : screen.height)()
+  const maxSize = (()=> {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  if (width > height) return height * 6 / 7;
+  else return width
+  })()
   const [size, setSize] = useState(initSize);
   const dl = 200;
   useEffect(()=> {
@@ -24,7 +29,7 @@ export const AnimateBackground = function () {
     setSize(maxSize)
     }, 1000)
   }, [])
-  return <section className='w-screen h-screen absolute z-0 overflow-hidden'>
+  return <section className='absolute z-0 w-screen h-screen overflow-hidden'>
     <SwellBox
       size={size}
       className={`absolute rounded-full bg-red-300 z-40`}
