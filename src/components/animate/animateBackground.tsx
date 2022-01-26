@@ -24,7 +24,7 @@ export const AnimateBackground = function () {
     setSize(maxSize)
     }, 1000)
   }, [])
-  return <div className='w-full h-full absolute z-0 overflow-y-hidden'>
+  return <section className='w-screen h-screen absolute z-0 overflow-hidden'>
     <SwellBox
       size={size}
       className={`absolute rounded-full bg-red-300 z-40`}
@@ -50,5 +50,5 @@ export const AnimateBackground = function () {
       className={`absolute rounded-full bg-pink-300 z-0`}
       >
     </SwellBox>
-  </div>
+  </section>
 }

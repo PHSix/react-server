@@ -1,0 +1,103 @@
+.markdown * {
+  color:#3e3e3e;
+}
+  
+.markdown p{
+  letter-spacing: 1px !important;
+  line-height: 1.7 !important;
+  min-height: 1em !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  text-align: justify;
+  /* margin: 20px 0 !important; */
+}
+
+.markdown blockquote {
+    border-left: 10px solid rgba(128,128,128,0.075);
+    background-color: rgba(128,128,128,0.05);
+    padding: 13px 15px !important;
+    margin: 0px;
+}
+
+b.markdown lockquote p {
+  color: #898989;
+  margin: 0px;
+}
+
+.markdown strong {
+    font-weight: normal;
+    color: #FD5B03;
+}
+
+.markdown {
+  font-size: 15px;
+}
+
+.markdown pre {
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  word-wrap: break-word;
+  padding: 12px 13px;
+  font-size: 13px;
+  color: #898989;
+}
+
+.markdown h1,h2,h3,h4,h5,h6 {
+    word-break: break-all !important;
+    margin: 20px 0;
+    line-height: 1.2;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.markdown h1 {
+    border-left: 6px solid #71BA51 !important;
+    font-size: 20px !important;
+}
+
+.markdown h2 {
+    border-left: 4px solid #71BA51 !important;
+    font-size: 18px !important;
+}
+
+.markdown h3 {
+  border-left: 4px solid #71BA51 !important;
+}
+
+.markdown a {
+  color: #4183C4 !important;
+  text-decoration: none !important;
+}
+
+.markdown ul, ol {
+  padding-left: 30px;
+}
+
+.markdown li {
+  line-height: 5px;
+}
+
+.markdown hr {
+    height: 4px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    border-bottom: 1px solid #ddd;
+}
+
+.markdown pre {
+ background: #f2f2f2 !important;
+ padding: 12px 13px;
+}
+
+.markdown code {
+  color: #a71d5d;
+}
+.markdown li {
+  white-space: word-wrap;
+}
+

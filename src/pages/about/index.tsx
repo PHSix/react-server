@@ -1,8 +1,8 @@
-import {} from "react";
+import {} from 'react';
 
 export const About = function () {
   return (
-    <main className="flex flex-col h-full w-full justify-center text-left px-8 text-lg items-center">
+    <main className="flex flex-col h-full w-full justify-center text-left px-8 text-lg items-center py-8">
       <section className="md:w-1/2">
         {/* TODO: 头像 */}
         <p className="font-bold">PH</p>

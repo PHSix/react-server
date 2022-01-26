@@ -1,65 +1,65 @@
 import { useEffect, useState } from 'react';
-import { marked } from 'marked';
-import ReactMarkdown from "react-markdown";
+import md5 from 'md5'
+import markdownIt from 'markdown-it'
 import { useLocation, useNavigate } from 'react-router-dom';
-import "./post.css"
+// import "./post.css"
+import "./markdown.css"
+import {TypingHeader} from '../../components/animate/typingHeader';
 
 interface PostState {
-  id: number;
+title: string;
+createdAt: string;
 }
 
 interface PostMsg {
-  author: string;
-  body: string[];
-  createdAt: Date;
-  title: string;
+author: string;
+body: string;
+createdAt: Date;
+title: string;
 }
 
 export const Post = function () {
   const location = useLocation();
   const navigate = useNavigate();
   const [post, setPost]: [PostMsg, Function] = useState({
-    title: '',
-    author: '',
-    body: [],
-    createdAt: new Date(),
-  });
-  const [body, setBody]: [string, Function] = useState('');
-  const localtionState = location.state as PostState;
-  const id = localtionState.id;
-  // 当获取不到state的时候，重定向回去
-  if (!id) {
-    navigate('/blog');
-  }
-  useEffect(function () {
-    fetch(`/src/assets/posts/${id}.json`)
-      .then(async (resp) => {
+title: '',
+author: '',
+body: "",
+createdAt: new Date(),
+});
+const [body, setBody]: [string, Function] = useState('');
+// 当获取不到state的时候，重定向回去
+useEffect(function () {
+    const localtionState = location.state as PostState;
+    if (localtionState === null) {navigate("/blog");
+    return;}
+    const title = localtionState.title;
+    const createdAt = localtionState.createdAt;
+    const fileMd5 = md5(title + createdAt);
+    fetch(`/posts/${fileMd5}.json`)
+    .then(async (resp) => {
         return await resp.json();
-      })
-      .then((respJson) => {
+        })
+    .then((respJson) => {
         setPost({
-          author: respJson.author,
-          body: respJson.body,
-          createdAt: new Date(respJson.created_at),
-          title: respJson.title,
+author: respJson.author,
+body: respJson.body,
+createdAt: new Date(respJson.created_at),
+title: respJson.title,
+});
+        const md = new markdownIt()
+        setBody(md.render(respJson.body));
         });
-        setBody(marked.parse(respJson.body.join()));
-      });
-  }, []);
-  return (
-    <main className="whitespace-pre-wrap w-full p-8 md:w-1/2 md:m-auto md:my-20">
-      <section className="max-w-full">
-        <div
-          className="text-center text-2xl md:text-5xl"
-        >{post.title}</div>
-        <hr className="my-8"/>
-        <article>
-          <ReactMarkdown>
-          {body}
-          </ReactMarkdown>
-        </article>
-        // <article className="markdown-body" dangerouslySetInnerHTML={{ __html: body }}></article>
-      </section>
+}, []);
+return (
+    <main className="w-full p-8 whitespace-pre-wrap md:w-3/4 xl:w-1/2 md:m-auto md:my-20">
+    <section className="max-w-full">
+    <TypingHeader className={"text-xl text-center"} title={post.title}></TypingHeader>
+    </section>
+    <hr className="my-8"/>
+    <article className="markdown" dangerouslySetInnerHTML={{ __html: body }}></article>
     </main>
-  );
+    );
 };
+
+

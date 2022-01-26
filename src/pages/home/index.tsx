@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AnimateBackground } from '../../components/animate/animateBackground';
@@ -45,15 +45,18 @@ const animateLabel = function (label: Label) {
       }}
       className={`text-white text-right shadown-3xl rounded-md cursor-pointer my-8 ${labelColorClass}`}
     >
-      <p className="sm:text-sm md:text-base mr-8 my-4">{label.labelName}</p>
+      <p className="my-4 mr-8 sm:text-sm md:text-base">{label.labelName}</p>
     </Label>
   );
 };
 
 export const Home = function () {
+useEffect(()=> {
+document.title = "PH's website"
+}, [])
   const labels: Label[] = [
     {
-      labelName: '博客',
+      labelName: '日记',
       labelTo: '/blog',
       idx: 1,
       labelColorClass: 'bg-gradient-to-l',
@@ -79,16 +82,16 @@ export const Home = function () {
   ];
   return (
     <main
-      className="min-h-screen w-full overflow-x-hidden flex-col flex justify-center"
+      className="flex flex-col justify-center w-full min-h-screen overflow-x-hidden"
       style={{
-        backgroundImage: 'url(/src/assets/background.jpg)',
+        backgroundImage: 'url(/background.jpg)',
         backgroundSize: 'cover',
       }}
     >
       <AnimateBackground></AnimateBackground>
-      <TypingHeader title={'Welcome to my website.'}></TypingHeader>
-      <section className="w-3/4 md:w-1/5 min-h-1/2 flex flex-col justify-center z-10">
-        <div className="h-1/2 w-full flex flex-col justify-around items-center">
+      <TypingHeader title={'Hi. Welcome to my website.'} className={"text-2xl"}></TypingHeader>
+      <section className="z-10 flex flex-col justify-center w-3/4 md:w-2/5 xl:w-1/4 min-h-1/2">
+        <div className="flex flex-col items-center justify-around w-full h-1/2">
           {labels.map((label) => {
             return animateLabel(label);
           })}

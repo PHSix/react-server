@@ -3,6 +3,7 @@ import styled, {keyframes} from 'styled-components';
 
 interface TypingProps {
   title: string;
+  className?: string;
 }
 
 const blink = keyframes`
@@ -23,8 +24,9 @@ const Blink = styled.p`
   animation-iteration-count: infinite;
 ` 
 
-export const TypingHeader = function ({ title }: TypingProps) {
+export const TypingHeader = function ({ title, className }: TypingProps) {
   const [typeWords, setTypeWords] = useState('');
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTypeWords((type: string) => {
@@ -35,10 +37,10 @@ export const TypingHeader = function ({ title }: TypingProps) {
         return type + title[type.length];
       });
     }, 50);
-  }, []);
+  }, [title]);
 
   return (
-    <section className="m-8 z-10">
+    <section className={`m-8 z-10 ${className ? className: ""}`}>
       <pre className='inline' >{typeWords}</pre>
       <Blink className='inline'>_</Blink>
     </section>
