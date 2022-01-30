@@ -1,30 +1,46 @@
+import React, { ReactNode, Suspense } from 'react';
 import { RouteObject } from 'react-router-dom';
-import { About } from '../pages/about';
-import { Blog } from '../pages/blog';
-import { Home } from '../pages/home';
-import { Post } from '../pages/post';
-import Tree from '../pages/tree';
+import LoadingAmimate from '../components/animate/loading';
+// 如果有export default的时候的写法
+const Home = React.lazy(() => import('../pages/home'));
+// 没有的时候的写法
+const About = React.lazy(() =>
+  import('../pages/about').then((module) => ({ default: module.About }))
+);
+const Blog = React.lazy(() =>
+  import('../pages/blog').then((module) => ({ default: module.Blog }))
+);
+const Post = React.lazy(() =>
+  import('../pages/post').then((module) => ({ default: module.Post }))
+);
+const Tree = React.lazy(() =>
+  import('../pages/tree').then((module) => ({ default: module.Tree }))
+);
+
+const createLazyLoading = function (child: ReactNode) {
+  return <Suspense fallback={<LoadingAmimate />}>{child}</Suspense>;
+};
 
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Home />,
+    element: createLazyLoading(<Home />),
   },
   {
     path: '/blog',
-    element: <Blog />,
+    element: createLazyLoading(<Blog />),
   },
   {
     path: '/blog/post',
-    element: <Post />,
+    element: createLazyLoading(<Post />),
   },
   {
     path: '/about',
-    element: <About />,
+    element: createLazyLoading(<About />),
   },
   {
     path: '/tree',
-    element: <Tree />,
+    element: createLazyLoading(<Tree />),
   },
 ];
 

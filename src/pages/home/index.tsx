@@ -51,9 +51,9 @@ const animateLabel = function (label: Label) {
 };
 
 export const Home = function () {
-useEffect(()=> {
-document.title = "PH's website"
-}, [])
+  useEffect(() => {
+    document.title = "PH's website";
+  }, []);
   const labels: Label[] = [
     {
       labelName: '笔记',
@@ -89,7 +89,10 @@ document.title = "PH's website"
       }}
     >
       <AnimateBackground></AnimateBackground>
-      <TypingHeader title={'Hi. Welcome to my website.'} className={"text-2xl"}></TypingHeader>
+      <TypingHeader
+        title={'Hi. Welcome to my website.'}
+        className={'text-2xl'}
+      ></TypingHeader>
       <section className="z-10 flex flex-col justify-center w-3/4 md:w-2/5 xl:w-1/4 min-h-1/2">
         <div className="flex flex-col items-center justify-around w-full h-1/2">
           {labels.map((label) => {
@@ -100,3 +103,5 @@ document.title = "PH's website"
     </main>
   );
 };
+
+export default Home;

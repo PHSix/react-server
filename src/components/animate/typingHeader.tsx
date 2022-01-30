@@ -10,8 +10,14 @@ const blink = keyframes`
   0% {
     opacity: 0%;
   }
-  50% {
+  20% {
+    opacity: 30%;
+  }
+  50 % {
     opacity: 100%;
+  }
+  70% {
+    opacity: 60%;
   }
   100% {
     opacity: 0%;
@@ -19,7 +25,7 @@ const blink = keyframes`
 `
 
 const Blink = styled.p`
-  animation-duration: 1s;
+  animation-duration: 1.8s;
   animation-name: ${blink};
   animation-iteration-count: infinite;
 ` 

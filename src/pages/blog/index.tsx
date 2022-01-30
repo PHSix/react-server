@@ -25,7 +25,9 @@ const entryConponent = function (entry: Entry, gotoCb: GotoCallback) {
       onClick={() => gotoCb(entry)}
     >
       <p className="text-sm md:text-xl">{entry.title}</p>
-      <p className="text-xs text-right text-gray-500">{`时间：${time.getFullYear() +  1}年${time.getMonth() + 1}月${time.getDay() + 1}日`}</p>
+      <p className="text-xs text-right text-gray-500">{`时间：${
+        time.getFullYear() + 1
+      }年${time.getMonth() + 1}月${time.getDate() + 1}日`}</p>
     </div>
   );
 };
@@ -54,33 +56,38 @@ export const Blog = function () {
       });
     });
   }, []);
-  useEffect(()=> {
-  document.title = "我的个人博客";
-  }, [])
+  useEffect(() => {
+    document.title = '我的个人博客';
+  }, []);
   const navigate = useNavigate();
   const gotoPost = function (e: Entry) {
     navigate('/blog/post', {
       state: {
         title: e.title,
-        createdAt : e.createdAt,
+        createdAt: e.createdAt,
       },
     });
   };
   return (
     <main className="w-full mx-8 md:w-3/4 xl:w-1/2 md:mx-auto md:mt-32">
-      <TypingHeader title="PH的个人博客(学习笔记)" className='text-xl text-center'></TypingHeader>
+      <TypingHeader
+        title="PH的个人博客(学习笔记)"
+        className="text-xl text-center"
+      ></TypingHeader>
       <section>
-      {fetchStatus
-        ? entries.map((entry, idx) => {
-            return (
-              <div key={idx}>
-                <hr key={idx + 1000} />
-                {entryConponent(entry, gotoPost)}
-              </div>
-            );
-          })
-        : fetchAnimate()}
+        {fetchStatus
+          ? entries.map((entry, idx) => {
+              return (
+                <div key={idx}>
+                  <hr key={idx + 1000} />
+                  {entryConponent(entry, gotoPost)}
+                </div>
+              );
+            })
+          : fetchAnimate()}
       </section>
     </main>
   );
 };
+
+export default Blog

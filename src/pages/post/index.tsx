@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import md5 from 'md5';
 import markdownIt from 'markdown-it';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import "./post.css"
 import './markdown.css';
 import { TypingHeader } from '../../components/animate/typingHeader';
 
@@ -32,7 +31,7 @@ export const Post = function () {
   useEffect(function () {
     const localtionState = location.state as PostState;
     if (localtionState === null) {
-      navigate('/blog');
+      navigate('/blog', { replace: true });
       return;
     }
     const title = localtionState.title;
@@ -54,7 +53,7 @@ export const Post = function () {
       });
   }, []);
   return (
-    <main className="w-full p-8 whitespace-pre-wrap md:w-3/4 xl:w-1/2 md:m-auto md:my-20">
+    <main className="w-full p-8 md:w-3/4 xl:w-1/2 md:m-auto md:my-20">
       <section className="max-w-full">
         <TypingHeader
           className={'text-xl text-center'}
@@ -63,9 +62,11 @@ export const Post = function () {
       </section>
       <hr className="my-8" />
       <article
-        className="markdown"
+        className="markdown-body"
         dangerouslySetInnerHTML={{ __html: body }}
       ></article>
     </main>
   );
 };
+
+export default Post;

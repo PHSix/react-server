@@ -31,7 +31,7 @@ export const About = function () {
           <span className="font-bold">标签：</span>
           <Tag colorClass='bg-red-300'>Linux</Tag>
           <Tag colorClass='bg-pink-300'>Javascript</Tag>
-          <Tag colorClass='bg-purple-300'>FrontDesk</Tag>
+          <Tag colorClass='bg-purple-300'>Frontend</Tag>
         </p>
         </section>
         <section className="mb-4">
@@ -42,3 +42,5 @@ export const About = function () {
     </main>
   );
 };
+
+export default About;
